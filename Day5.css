@@ -23,3 +23,19 @@ section {
   background-color: #f7f9fa;
   border-radius: 8px;
 }
+@media (width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  body {
+    margin: 16px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .box {
+    font-size: 14px;
+  }
+}
