@@ -11,3 +11,13 @@ Day2完了：HTMLの基本構造を理解し、index.htmlを作成。HTMLを使�
 Day3完了：CSSで基本的なスタイリングを実装
 Day4完了：Flexboxを「使える知識」にする
 Day5完了：学習ログページを完成
+
+# 概要
+未経験からWebエンジニアを目指す学習ログです。
+
+## 使用技術
+- HTML
+- CSS
+
+## 学習内容
+- Day1〜Day7：HTML/CSS基礎、Flexbox、レスポンシブ対応
