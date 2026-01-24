@@ -32,16 +32,39 @@ addButton.addEventListener ("click", () => {
   }
 
   logs.push({day, title});
+  renderLogs();
 
-  const div = document.createElement("div");
-  div.className = "box";
-  div.textContent = `${day} : ${title}`;
-  container.appendChild(div);
+  // const div = document.createElement("div");
+  // div.className = "box";
+  // div.textContent = `${day} : ${title}`;
+  // container.appendChild(div);
   
   dayInput.value = "";
   titleInput.value = "";
-
 })
+
+function renderLogs () {
+  container.innerHTML = "";
+
+  logs.forEach((log, index) => {
+    const div = document.createElement("div");
+    div.className = "box";
+    div.textContent = `${log.day} : ${log.title}`;
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "削除";
+
+    deleteBtn.addEventListener("click" ,() => {
+      logs.splice(index, 1);
+      renderLogs();
+    })
+
+    div.appendChild(deleteBtn);
+    container.appendChild(div);
+  })
+}
+
+renderLogs();
 
 button.addEventListener("click", () => {
   if (message.textContent == "") {
