@@ -6,17 +6,29 @@ const addButton = document.getElementById("add-btn");
 const container = document.querySelector(".container");
 const savedLogs = localStorage.getItem("logs");
 let editingIndex = null;
+let filter = "all";
 
 
 const logs = savedLogs
   ? JSON.parse(savedLogs)
   : [
-      {day:"Day1", title:"環境変数"},
-      {day:"Day2", title:"HTML基礎"},
-      {day:"Day3", title:"CSS基礎"},
-      {day:"Day4", title:"Flexbox"},
-      {day:"Day5", title:"レスポンシブ"}
+      { day: "Day1", title: "環境変数", completed: false }
     ];
+
+document.getElementById("filter-all").addEventListener("click", () => {
+  filter = "all";
+  renderLogs();
+});
+
+document.getElementById("filter-active").addEventListener("click", () => {
+  filter = "active";
+  renderLogs();
+});
+
+document.getElementById("filter-completed").addEventListener("click", () => {
+  filter = "completed";
+  renderLogs();
+});
 
 addButton.addEventListener ("click", () => {
   const day = dayInput.value;
@@ -43,9 +55,21 @@ addButton.addEventListener ("click", () => {
 })
 
 function renderLogs () {
+
+  let displayLogs = logs;
+
+  if (filter === "active") {
+    displayLogs = logs.filter(log => !log.completed);
+  } else if (filter === "completed") {
+    displayLogs = logs.filter(log => log.completed);
+  }
+
+
   container.innerHTML = "";
 
-  logs.forEach((log, index) => {
+  displayLogs.forEach((log, index) => {
+    const targetIndex = logs.indexOf(log);
+
     const div = document.createElement("div");
     div.className = "box";
     div.textContent = `${log.day} : ${log.title}`;
@@ -64,14 +88,31 @@ function renderLogs () {
     deleteBtn.textContent  = "削除";
 
     deleteBtn.addEventListener("click" ,() => {
-      logs.splice(index, 1);
+      logs.splice(targetIndex, 1);
       saveLogs();
       renderLogs();
     })
 
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = log.completed;
+
+    checkbox.addEventListener("change", ()=> {
+      log.completed = checkbox.checked;
+      saveLogs();
+      renderLogs();
+    })
+
+    if (log.completed) {
+      div.style.textDecoration = "line-through";
+      div.style.opacity = "0.6";
+    };
+
+    div.appendChild(checkbox);
     div.appendChild(editBtn);
     div.appendChild(deleteBtn);
     container.appendChild(div);
+
   })
 }
 
