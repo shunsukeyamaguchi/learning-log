@@ -6,7 +6,8 @@
   <title>learning-log</learning-log></title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<main>
+  <body>
   <h1>Learning Log</h1>
 
   <section>
@@ -14,9 +15,11 @@
     <p>初心者から5年後に月100万円稼ぐエンジニア目指しています</p>
   </section>
 
-  <button id="filter-all">すべて</button>
-  <button id="filter-active">未完了</button>
-  <button id="filter-completed">完了</button>
+  <div class="filters">
+    <button id="filter-all">すべて</button>
+    <button id="filter-active">未完了</button>
+    <button id="filter-completed">完了</button>
+  </div>
 
   <section>
     <h2>学習ログ</h2>
@@ -25,8 +28,10 @@
 
   <section>
     <h2>ログ追加</h2>
-    <input type="text" id="day-input" placeholder="Day12">
-    <input type="text" id="title-input" placeholder="内容">
+    <div class="form">
+      <input type="text" id="day-input" placeholder="Day12">
+      <input type="text" id="title-input" placeholder="内容">
+    </div>
     <button id="add-btn">追加</button>
   </section>
 
@@ -40,4 +45,5 @@
 
   <script src="script.js"></script>
 </body>
+</main>
 </html>

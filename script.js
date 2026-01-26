@@ -3,6 +3,7 @@ const message = document.getElementById("message");
 const dayInput = document.getElementById("day-input");
 const titleInput = document.getElementById("title-input");
 const addButton = document.getElementById("add-btn");
+addButton.className = "add-btn";
 const container = document.querySelector(".container");
 const savedLogs = localStorage.getItem("logs");
 let editingIndex = null;
@@ -76,6 +77,7 @@ function renderLogs () {
 
     const editBtn = document.createElement("button");
     editBtn.textContent = "編集";
+    editBtn.className = "edit-btn";
 
     editBtn.addEventListener("click", () => {
       addButton.textContent = "更新";
@@ -86,6 +88,7 @@ function renderLogs () {
 
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent  = "削除";
+    deleteBtn.className = "delete-btn";
 
     deleteBtn.addEventListener("click" ,() => {
       logs.splice(targetIndex, 1);
