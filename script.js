@@ -8,7 +8,8 @@ const container = document.querySelector(".container");
 const savedLogs = localStorage.getItem("logs");
 let editingIndex = null;
 let filter = "all";
-
+const btn = document.getElementById("toggle-btn");
+const box = document.getElementById("box");
 
 const logs = savedLogs
   ? JSON.parse(savedLogs)
@@ -134,3 +135,13 @@ button.addEventListener("click", () => {
     button.textContent = "表示する";
   }
 })
+
+btn.addEventListener("click", () => {
+  btn.classList.toggle("active");
+  if (btn.classList.contains("active")) {
+    btn.textContent = "ON";
+  } else {
+    btn.textContent = "OFF"
+  }
+
+});

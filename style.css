@@ -98,6 +98,15 @@ input {
   border-radius: 4px;
 }
 
+#toggle-btn {
+  padding: 10px 20px;
+}
+
+#toggle-btn.active {
+  background-color: green;
+  color: white;
+}
+
 @media (width: 768px) {
   .container {
     flex-direction: column;
