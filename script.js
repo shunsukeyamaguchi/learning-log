@@ -8,8 +8,16 @@ const container = document.querySelector(".container");
 const savedLogs = localStorage.getItem("logs");
 let editingIndex = null;
 let filter = "all";
-const btn = document.getElementById("toggle-btn");
+const toggleBtn = document.getElementById("toggle-btn");
+let isOn = false;
 const box = document.getElementById("box");
+const countBtn = document.getElementById("count-btn");
+const contText = document.getElementById("count");
+let count = Number(localStorage.getItem('count')) || 0;
+contText.textContent = count;
+
+
+
 
 const logs = savedLogs
   ? JSON.parse(savedLogs)
@@ -136,12 +144,21 @@ button.addEventListener("click", () => {
   }
 })
 
-btn.addEventListener("click", () => {
-  btn.classList.toggle("active");
-  if (btn.classList.contains("active")) {
-    btn.textContent = "ON";
-  } else {
-    btn.textContent = "OFF"
-  }
+toggleBtn.addEventListener("click", () => {
+  isOn = !isOn;
+  toggleBtn.classList.toggle("active");
+  toggleBtn.textContent = isOn ? "ON" : "OFF"
 
 });
+
+countBtn.addEventListener("click", ()=> {
+  count++;
+  contText.textContent = count;
+  saveCounts();
+})
+
+function saveCounts() {
+  localStorage.setItem("count", JSON.stringify(count));
+}
+
+// saveCounts();

@@ -107,6 +107,15 @@ input {
   color: white;
 }
 
+.count-btn {
+  display: flex;
+}
+
+#count {
+  padding-left: 10px;
+  margin: 0px;
+}
+
 @media (width: 768px) {
   .container {
     flex-direction: column;
