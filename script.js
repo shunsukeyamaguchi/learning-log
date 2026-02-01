@@ -15,6 +15,8 @@ const countBtn = document.getElementById("count-btn");
 const contText = document.getElementById("count");
 let count = Number(localStorage.getItem('count')) || 0;
 contText.textContent = count;
+const buttons = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".tab-content");
 
 
 
@@ -161,4 +163,18 @@ function saveCounts() {
   localStorage.setItem("count", JSON.stringify(count));
 }
 
-// saveCounts();
+buttons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    buttons.forEach((b) => {
+      b.classList.remove("active");
+    });
+    btn.classList.add("active");
+
+    contents.forEach((c) => {
+      c.classList.remove("active");
+    })
+    const target = document.getElementById(btn.dataset.tab);
+    target.classList.add("active")
+
+  });
+});

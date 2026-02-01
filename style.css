@@ -116,6 +116,19 @@ input {
   margin: 0px;
 }
 
+.tab-btn.active {
+  background-color: blue;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display:block;
+}
+
 @media (width: 768px) {
   .container {
     flex-direction: column;
